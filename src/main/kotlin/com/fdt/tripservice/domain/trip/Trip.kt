@@ -1,9 +1,15 @@
 package com.fdt.tripservice.domain.trip
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.elasticsearch.annotations.Document
+import org.springframework.data.elasticsearch.annotations.GeoPointField
 import java.time.LocalDate
 
-class Trip(
+@Document(indexName = "trips", type = "trip")
+data class Trip(
+        @Id
         var id: Long? = null,
+        @GeoPointField
         val departure: Location,
         val arrival: Location,
         val departureAt: LocalDate,

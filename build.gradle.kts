@@ -20,11 +20,14 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.data:spring-data-elasticsearch:3.2.7.RELEASE")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 	testImplementation("org.mockito:mockito-core:3.3.0")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
+	testImplementation("org.testcontainers:junit-jupiter:1.14.1")
+	testImplementation("org.testcontainers:elasticsearch:1.14.1")
 }
 
 tasks.withType<Test> {
