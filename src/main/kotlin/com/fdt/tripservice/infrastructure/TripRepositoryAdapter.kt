@@ -17,8 +17,8 @@ class TripRepositoryAdapter(
     override fun findById(id: String): Trip =
         tripRepository.findByIdOrNull(id) ?: throw TripNotFoundException("Trip with id $id not exists")
 
-    override fun findNearBy(location: Location): List<Trip> =
-        tripRepository.findNearBy(location.lat, location.lon)
+    override fun findNearBy(departure: Location, arrival: Location): List<Trip> =
+        tripRepository.findNearBy(departure.lat, departure.lon, arrival.lat, arrival.lon)
 
     override fun deleteAll() =
             tripRepository.deleteAll()

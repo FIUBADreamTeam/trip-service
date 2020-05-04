@@ -54,7 +54,7 @@ class TripRepositoryAdapterTest {
         val savedTrip = tripRepository.save(trip)
         assertEquals(
                 savedTrip,
-                tripRepository.findNearBy(savedTrip.departure).first()
+                tripRepository.findNearBy(savedTrip.departure, savedTrip.arrival).first()
         )
     }
 
@@ -64,7 +64,7 @@ class TripRepositoryAdapterTest {
         val savedTrip = tripRepository.save(trip)
         assertEquals(
                 emptyList<Trip>(),
-                tripRepository.findNearBy(savedTrip.arrival)
+                tripRepository.findNearBy(savedTrip.departure.copy(lat = 1, lon = 1), savedTrip.arrival)
         )
     }
 
@@ -78,6 +78,6 @@ class TripRepositoryAdapterTest {
 class MyElasticsearchContainer : ElasticsearchContainer() {
     init {
         addFixedExposedPort(9300, 9300)
-        addEnv("cluster.name","trip-service")
+        //addEnv("cluster.name","trip-service")
     }
 }

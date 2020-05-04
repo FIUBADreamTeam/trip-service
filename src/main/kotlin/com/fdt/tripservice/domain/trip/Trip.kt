@@ -11,6 +11,7 @@ data class Trip(
         var id: String? = null,
         @GeoPointField
         val departure: Location,
+        @GeoPointField
         val arrival: Location,
         val departureAt: LocalDate,
         val meetingPoints: List<Location>,
