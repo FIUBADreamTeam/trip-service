@@ -5,10 +5,10 @@ import org.springframework.data.elasticsearch.annotations.Document
 import org.springframework.data.elasticsearch.annotations.GeoPointField
 import java.time.LocalDate
 
-@Document(indexName = "trips", type = "trip")
+@Document(indexName = "trips")
 data class Trip(
         @Id
-        var id: Long? = null,
+        var id: String? = null,
         @GeoPointField
         val departure: Location,
         val arrival: Location,

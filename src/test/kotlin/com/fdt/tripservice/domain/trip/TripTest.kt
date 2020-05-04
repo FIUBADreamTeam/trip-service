@@ -74,7 +74,7 @@ class TripTest {
         val locB = locB()
         val locC = locC()
         val locD = locD()
-        return Trip(0L, locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
+        return Trip(null, locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
     }
 
     private fun locD() = Location(3L, 3L)

@@ -14,9 +14,12 @@ class TripRepositoryAdapter(
     override fun save(trip: Trip): Trip =
         tripRepository.save(trip)
 
-    override fun findById(id: Long): Trip =
+    override fun findById(id: String): Trip =
         tripRepository.findByIdOrNull(id) ?: throw TripNotFoundException("Trip with id $id not exists")
 
     override fun findNearBy(location: Location): List<Trip> =
         tripRepository.findNearBy(location.lat, location.lon)
+
+    override fun deleteAll() =
+            tripRepository.deleteAll()
 }

@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ElasticsearchTripRepository : ElasticsearchRepository<Trip, Long> {
+interface ElasticsearchTripRepository : ElasticsearchRepository<Trip, String> {
     @Query("""
         {
             "bool" : {

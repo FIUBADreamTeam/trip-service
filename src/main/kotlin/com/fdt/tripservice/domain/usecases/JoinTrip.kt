@@ -12,7 +12,7 @@ class JoinTrip(
         private val tripAuthService: TripAuthService,
         private val tripRepository: TripRepository) {
 
-    fun execute(token: String, tripId: Long, subtrip: Subtrip, joinerId: Long) {
+    fun execute(token: String, tripId: String, subtrip: Subtrip, joinerId: Long) {
         tripAuthService.verifyJoinerPermissionFor(token, joinerId)
         val trip = tripRepository.findById(tripId)
         joinBySections(trip, joinerId, subtrip)

@@ -171,8 +171,8 @@ class JoinTripTest {
         return trip
     }
 
-    private fun givenANotExistingTrip(): Long {
-        val invalidTripId = 1L
+    private fun givenANotExistingTrip(): String {
+        val invalidTripId = "id"
         `when`(tripRepository.findById(invalidTripId)).thenThrow(TripNotFoundException::class.java)
         return invalidTripId
     }
@@ -182,7 +182,7 @@ class JoinTripTest {
         val locB = locB()
         val locC = locC()
         val locD = locD()
-        return Trip(1L, locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
+        return Trip(null, locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
     }
 
     private fun givenAValidSubtrip() = Subtrip(locA(), locB())
