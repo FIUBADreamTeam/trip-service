@@ -182,7 +182,7 @@ class JoinTripTest {
         val locB = locB()
         val locC = locC()
         val locD = locD()
-        return Trip(null, locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
+        return Trip("id", locA, locD, LocalDate.now(), listOf(locB, locC), 1L, capacity)
     }
 
     private fun givenAValidSubtrip() = Subtrip(locA(), locB())
