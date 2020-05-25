@@ -1,12 +1,12 @@
 package com.fdt.tripservice.domain.usecases
 
 import com.fdt.tripservice.domain.trip.Subtrip
-import com.fdt.tripservice.domain.trip.exception.InvalidTripSectionException
 import com.fdt.tripservice.domain.trip.Trip
 import com.fdt.tripservice.domain.trip.TripRepository
-import com.fdt.tripservice.domain.trip.exception.UserAlreadyAddedToTripException
 import com.fdt.tripservice.domain.trip.auth.TripAuthService
+import com.fdt.tripservice.domain.trip.exception.InvalidTripSectionException
 import com.fdt.tripservice.domain.trip.exception.UnavailableTripSeatException
+import com.fdt.tripservice.domain.trip.exception.UserAlreadyAddedToTripException
 
 class JoinTrip(
         private val tripAuthService: TripAuthService,

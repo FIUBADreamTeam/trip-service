@@ -54,7 +54,7 @@ class TripRepositoryAdapterTest {
         val savedTrip = tripRepository.save(trip)
         assertEquals(
                 savedTrip,
-                tripRepository.findNearBy(savedTrip.departure, savedTrip.arrival).first()
+                tripRepository.findNearByAndDepartureAt(savedTrip.departure, savedTrip.arrival, LocalDate.now()).first()
         )
     }
 
@@ -64,7 +64,7 @@ class TripRepositoryAdapterTest {
         val savedTrip = tripRepository.save(trip)
         assertEquals(
                 emptyList<Trip>(),
-                tripRepository.findNearBy(savedTrip.departure.copy(lat = 1, lon = 1), savedTrip.arrival)
+                tripRepository.findNearByAndDepartureAt(savedTrip.departure.copy(lat = 1, lon = 1), savedTrip.arrival, LocalDate.now())
         )
     }
 
