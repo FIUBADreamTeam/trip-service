@@ -12,16 +12,23 @@ import java.time.LocalDate
 class TripRepositoryAdapter(
         private val tripRepository: ElasticsearchTripRepository
 ) : TripRepository {
-    override fun save(trip: Trip): Trip =
-            tripRepository.save(trip)
 
-    override fun findById(id: String): Trip =
-            tripRepository.findByIdOrNull(id)
-                    ?: throw TripNotFoundException("Trip with id $id not exists")
 
-    override fun findNearByAndDepartureAt(departure: Location, arrival: Location, departureAt: LocalDate): List<Trip> =
-            tripRepository.findNearBy(departure.lat, departure.lon, arrival.lat, arrival.lon)
+    override fun save(trip: Trip): Trip {
+        return tripRepository.save(trip)
+    }
 
-    override fun deleteAll() =
-            tripRepository.deleteAll()
+    override fun findById(id: String): Trip {
+        return tripRepository.findByIdOrNull(id)
+                ?: throw TripNotFoundException("Trip with id $id not exists")
+    }
+
+    // TODO agregar busqueda por departureAt
+    override fun findNearByAndDepartureAt(departure: Location, arrival: Location, departureAt: LocalDate): List<Trip> {
+        return tripRepository.findNearBy(departure.lat, departure.lon, arrival.lat, arrival.lon)
+    }
+
+    override fun deleteAll() {
+        tripRepository.deleteAll()
+    }
 }

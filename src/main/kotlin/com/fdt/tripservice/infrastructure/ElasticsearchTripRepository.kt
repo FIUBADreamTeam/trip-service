@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ElasticsearchTripRepository : ElasticsearchRepository<Trip, String> {
+
+    // TODO agregar búsqueda con fechas
     @Query("""
         {
             "bool" : {

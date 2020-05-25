@@ -3,6 +3,7 @@ package com.fdt.tripservice.domain.trip
 import org.springframework.data.annotation.Id
 import org.springframework.data.elasticsearch.annotations.Document
 import org.springframework.data.elasticsearch.annotations.GeoPointField
+import com.fdt.tripservice.domain.trip.exception.UserNotInTripException
 import java.time.LocalDate
 
 @Document(indexName = "trips")
@@ -42,5 +43,13 @@ data class Trip(
     }
 
     fun joinPassengerAt(userId: Long, subtrip: Subtrip) {
-        sections[subtrip].map { it.joinPassenger(userId) }    }
+        sections[subtrip].map { it.joinPassenger(userId) }
+    }
+
+    fun unjoinPassenger(passengerId: Long) {
+        if (passengerId !in this)
+            throw UserNotInTripException("User $passengerId not in trip ${this.id}")
+
+        sections.unjoinPassenger(passengerId)
+    }
 }
